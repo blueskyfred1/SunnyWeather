@@ -1,6 +1,7 @@
 package com.sunnyweather.android.logic
 
 import androidx.lifecycle.liveData
+import com.sunnyweather.android.logic.model.Place
 import com.sunnyweather.android.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
@@ -18,11 +19,12 @@ object Repository {
             if (placeResponse.status == "ok") {
                 val places = placeResponse.places
                 Result.success(places)
-            }else{
+            }
+            else{
                 Result.failure(RuntimeException("response status is ${placeResponse.status}"))
             }
         }catch (e: Exception) {
-
+            Result.failure<List<Place>>(e)
         }
         emit(result)
     }
