@@ -21,7 +21,7 @@ import com.sunnyweather.android.databinding.FragmentPlaceBinding
  * @date: 2023/11/15 14:15
  */
 class PlaceFragment : Fragment() {
-    val viewModel by lazy {
+    private val viewModel by lazy {
         ViewModelProvider(this)[PlaceViewModel::class.java]
     }
     private lateinit var adapter: PlaceAdapter
